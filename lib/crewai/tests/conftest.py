@@ -1,9 +1,14 @@
 """Shared test configuration for CrewAI's core package."""
 
 import builtins
+import os
 import sys
 
 import pytest
+
+
+# LiteLLM 1.106+ fetches its model-cost map at import time unless this is set.
+os.environ.setdefault("LITELLM_LOCAL_MODEL_COST_MAP", "true")
 
 
 @pytest.fixture(autouse=True)
